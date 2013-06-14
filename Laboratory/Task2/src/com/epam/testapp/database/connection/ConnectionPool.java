@@ -16,8 +16,8 @@ import org.apache.log4j.Logger;
 import com.epam.testapp.exceptions.DatabaseException;
 
 /**
- * Class contains constructor and methods which provides 
- * ConnectionPool object creation and for locating connections to use.
+ * Class contains constructor and methods which provide for 
+ * the creation ConnectionPool object  and the location connections for their further use.
  * @author Andrei_Ilyin1
  */
 public final class ConnectionPool {    
