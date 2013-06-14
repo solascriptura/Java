@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE categories SYSTEM "products.dtd">
+<product:categories xmlns:product="http://www.epam.com/xml/products"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.epam.com/xml/products products.xsd">
+	<category name="Digital Appliances">
+		<subcategory name="Television Sets">
+			<product name="Plasma TV">
+				<producer>LG Electronics</producer>
+				<model>PM470</model>
+				<issueDate>01-01-2013</issueDate>
+				<color>black</color>
+				<price>805.00</price>
+			</product>
+			<product name="LCD TV">
+				<producer>Samsung Group</producer>
+				<model>ES550</model>
+				<issueDate>31-12-2012</issueDate>
+				<color>steel</color>
+				<notInStock>true</notInStock>
+			</product>
+			<product name="CRT TV">
+				<producer>Horizont Holding Company</producer>
+				<model>AF022</model>
+				<issueDate>01-01-2010</issueDate>
+				<color>white</color>
+				<price>50.00</price>
+			</product>
+		</subcategory>
+		<subcategory name="Photo and Video">
+			<product name="Camcorder">
+				<producer>Nikon Corporation</producer>
+				<model>FF002</model>
+				<issueDate>01-09-1971</issueDate>
+				<color>black</color>
+				<price>101.06</price>
+			</product>
+			<product name="Digital Camera">
+				<producer>Canon Inc.</producer>
+				<model>ED600</model>
+				<issueDate>02-02-2013</issueDate>
+				<color>steel</color>
+				<notInStock>true</notInStock>
+			</product>
+		</subcategory>
+		<subcategory name="Mobile Phones">
+		</subcategory>
+	</category>
+	<category name="Household products">
+		<subcategory name="Kitchen equipments">
+			<product name="Ironing Board">
+				<producer>Eurogold Industries LTD</producer>
+				<model>RF678</model>
+				<issueDate>21-01-2011</issueDate>
+				<color>red</color>
+				<price>40.08</price>
+			</product>
+		</subcategory>
+		<subcategory name="Climatic Equipments">
+			<product name="Conditioner">
+				<producer>Mitsubishi Electric</producer>
+				<model>EF220</model>
+				<issueDate>14-08-2012</issueDate>
+				<color>grey</color>
+				<notInStock>true</notInStock>
+			</product>
+			<product name="Heater">
+				<producer>DeLonghi Inc.</producer>
+				<model>TR092</model>
+				<issueDate>17-11-2012</issueDate>
+				<color>white</color>
+				<price>30.28</price>
+			</product>
+		</subcategory>
+	</category>
+</product:categories>

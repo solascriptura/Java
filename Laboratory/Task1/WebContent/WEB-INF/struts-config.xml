@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+	"http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+	
+	<data-sources></data-sources>
+
+	<form-beans>		
+		<form-bean name="newsForm"
+			type="com.epam.testapp.presentation.form.NewsForm"/>
+		<form-bean name="deleteForm"
+			type="com.epam.testapp.presentation.form.DeleteForm"/>		
+	</form-beans>
+
+	<global-exceptions></global-exceptions>
+
+	<global-forwards></global-forwards>
+
+	<action-mappings>
+
+		<action path="/init" type="com.epam.testapp.presentation.action.NewsAction"
+			name="newsForm" scope="session" parameter="init" validate="false">
+			<forward name="success" path="/list.do" redirect="true"/>
+		</action>
+		
+		<action path="/list" type="com.epam.testapp.presentation.action.NewsAction"
+			name="newsForm" scope="session" parameter="list" validate="false">
+			<forward name="success" path="list.page"/>
+		</action>
+		
+		<action path="/delete" type="com.epam.testapp.presentation.action.NewsAction"
+			name="deleteForm" input="/list.do" scope="request" parameter="delete" validate="true">
+			<forward name="success" path="/list.do" redirect="true"/>
+		</action>
+		
+		<action path="/view" type="com.epam.testapp.presentation.action.NewsAction"
+			name="newsForm" scope="session" parameter="view" validate="false">
+			<forward name="success" path="view.page"/>
+		</action>
+		
+		<action path="/edit" type="com.epam.testapp.presentation.action.NewsAction"
+			name="newsForm" scope="session" parameter="edit" validate="false">
+			<forward name="success" path="edit.page"/>
+		</action>
+		
+		<action path="/add" type="com.epam.testapp.presentation.action.NewsAction"
+			name="newsForm" scope="session" parameter="add" validate="false">
+			<forward name="success" path="edit.page"/>
+		</action>
+		
+		<action path="/save" type="com.epam.testapp.presentation.action.NewsAction"
+			name="newsForm" scope="session" input="edit.page" parameter="save" validate="true">
+			<forward name="success" path="/list.do" redirect="true"/>
+		</action>
+		
+		<action path="/cancel" type="com.epam.testapp.presentation.action.NewsAction"
+			name="newsForm" scope="session" parameter="cancel" validate="false">
+			<forward name="list" path="/list.do" redirect="true"/>
+			<forward name="view" path="view.page"/>
+		</action>
+		
+		<action path="/changeLanguage" type="com.epam.testapp.presentation.action.NewsAction"
+			name="newsForm" parameter="changeLanguage" validate="false">
+		</action>
+		
+	</action-mappings>
+	
+	<controller
+		processorClass="org.springframework.web.struts.DelegatingTilesRequestProcessor" />
+		
+	<message-resources parameter= "resource.AppResources"/>
+	
+	<plug-in className="org.apache.struts.tiles.TilesPlugin">
+		<set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml" />
+	</plug-in>
+	
+	<plug-in className="org.springframework.web.struts.ContextLoaderPlugIn">
+		<set-property property="contextConfigLocation" value="/WEB-INF/application-context.xml" />
+	</plug-in>
+	
+</struts-config>

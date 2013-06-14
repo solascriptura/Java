@@ -1,0 +1,2 @@
+News management redevelopment using Hibernate and JPA based DAO classes
+Add new INewsDAO implementations which work one through Hibernate(XML mappings) and other one through JPA(annotations).

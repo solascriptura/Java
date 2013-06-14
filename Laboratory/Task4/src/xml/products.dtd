@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!ELEMENT categories (category)*>
+<!ELEMENT category (subcategory)+>
+<!ATTLIST category name CDATA #REQUIRED>
+
+<!ELEMENT subcategory (product)*>
+<!ATTLIST subcategory name CDATA #REQUIRED>
+
+<!ELEMENT product (producer, model, issueDate, color, (notInStock | price))>
+<!ATTLIST product name CDATA #REQUIRED>
+
+<!ELEMENT producer (#PCDATA)>
+<!ELEMENT model (#PCDATA)>
+<!ELEMENT issueDate (#PCDATA)>
+<!ELEMENT color (#PCDATA)>
+<!ELEMENT notInStock (#PCDATA)>
+<!ELEMENT price (#PCDATA)>

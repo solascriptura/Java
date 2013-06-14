@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="1.0" xmlns="http://java.sun.com/xml/ns/persistence/orm" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd ">	
+	  
+	<named-query name="getall.news">
+		<query>
+			SELECT news FROM News news ORDER BY news.date DESC
+		</query>
+	</named-query>	
+	
+	<named-query name="delete.news">
+		<query>
+			DELETE FROM News news WHERE news.id IN :ids
+		</query>
+	</named-query>	
+		
+	<entity class="com.epam.testapp.model.News" access="PROPERTY" metadata-complete="true">
+		<table name="NEWS"/>
+			<sequence-generator name="ID_SEQUENCE_GENERATOR" sequence-name="NEWS_SEQ"/>
+			<attributes>
+				<id name="id">
+				<column name="ID"/>
+     			<generated-value generator="ID_SEQUENCE_GENERATOR" strategy="SEQUENCE"/>
+     			<sequence-generator name="ID_SEQUENCE_GENERATOR" sequence-name="NEWS_SEQ"/>
+     			</id>
+     	
+     			<basic name="title"><column name="TITLE"/></basic>
+     	
+     			<basic name="date"><column name="NEWS_DATE"/><temporal>DATE</temporal>
+     			</basic>
+     	
+     			<basic name="brief"><column name="BRIEF"/></basic>
+     	
+     			<basic name="content"><column name="CONTENT"/></basic>
+     		</attributes>
+	</entity>	
+	
+</entity-mappings>

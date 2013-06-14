@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	   					   http://www.springframework.org/schema/beans/spring-beans.xsd">
+	   					       
+    <bean id="connectionPool" class="com.epam.testapp.database.connection.ConnectionPool"
+		scope="singleton" autowire="byName" init-method="init" destroy-method="destroy">
+		
+		<property name="maxConnections">
+			<value>20</value>
+		</property>
+		
+		<property name="maxIdleConnections">
+			<value>10</value>
+		</property>
+		
+		<property name="driverName">
+			<value>oracle.jdbc.driver.OracleDriver</value>
+		</property>
+		
+		<property name="url">
+			<value>jdbc:oracle:thin:@localhost:1521:XE</value>
+		</property>
+		
+		<property name="user">
+			<value>Test</value>
+		</property>
+		
+		<property name="password">
+			<value>test</value>
+		</property>
+		
+		<property name="locale">
+			<value>en</value>
+		</property>
+	</bean>
+	
+	<bean id="newsDAO" class="com.epam.testapp.database.dao.NewsDAO"
+		scope="singleton" autowire="byName">
+		<property name="connectionPool" ref="connectionPool"></property>
+	</bean>
+	
+	<bean name="/init /list /delete /view /add /edit /save /cancel"
+		class="com.epam.testapp.presentation.action.NewsAction" scope="singleton">
+		<property name="newsDAO" ref="newsDAO"></property>
+	</bean>
+</beans>

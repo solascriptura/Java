@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.epam.com/xml/products"
+	xmlns:product="http://www.epam.com/xml/products">
+	
+	<element name="categories">
+		<complexType>
+			<sequence>
+				<element name="category" type="product:Category" minOccurs="0" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+	
+	<complexType name="Category">
+		<sequence>
+			<element name="subcategory" type="product:Subcategory" minOccurs="1" maxOccurs="unbounded"/>
+		</sequence>
+		<attribute name="name" type="string" use="required"/>
+	</complexType>
+	
+	
+	<complexType name="Subcategory">
+		<sequence>
+			<element name="product" type="product:Product" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+		<attribute name="name" type="string" use="required"/>
+	</complexType>
+	
+	
+	<complexType name="Product">
+		<sequence>
+			<element name="producer" type="string"/>
+			<element name="model" type="product:Model"/>
+			<element name="issueDate" type="product:IssueDate"/>
+			<element name="color" type="product:Color"/>
+			<choice>
+				<element name="notInStock" type="product:NotInStock"/>
+				<element name="price" type="product:Price"/>
+			</choice>
+		</sequence>
+		<attribute name="name" type="string" use="required"/>
+	</complexType>
+	
+	
+	<simpleType name="Model">
+		<restriction base="string">
+			<pattern value="[A-Za-z]{2}[0-9]{3}"/>
+		</restriction>
+	</simpleType>
+	
+	
+	<simpleType name="IssueDate">
+		<restriction base="string">
+			<pattern value="(0[1-9]|[12][0-9]|3[01])([\-]{1})(0[1-9]|1[012])([\-]{1})((19|20)\d\d)"/>
+		</restriction>
+	</simpleType>
+	
+	<simpleType name="Color">
+		<restriction base="string">
+			<enumeration value="red"/>
+			<enumeration value="green"/>
+			<enumeration value="blue"/>
+			<enumeration value="grey"/>
+			<enumeration value="yellow"/>
+			<enumeration value="pink"/>
+			<enumeration value="white"/>
+			<enumeration value="black"/>
+			<enumeration value="steel"/>
+		</restriction>
+	</simpleType>
+	
+	
+	<simpleType name="NotInStock">
+		<restriction base="string">
+			<pattern value="true"/>
+		</restriction>
+	</simpleType>
+	
+	
+	<simpleType name="Price">
+		<restriction base="double">
+			<minExclusive value="0.0"/>
+		</restriction>
+	</simpleType>
+	
+	
+</schema>

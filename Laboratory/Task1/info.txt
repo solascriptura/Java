@@ -1,0 +1,73 @@
+1.Register a SpringТs ready-make Struts plug-in in the Struts configuration file. (ContextLoaderPlugIn-SpringBeans.xml,SpringBeans.xml)
+
+2.Change your Struts action class to extend the SpringТs ActionSupport class, a subclass of the Struts Action class.
+
+3.The ActionSupport provide a convenient getWebApplicationContext() method for you to access beans declared in Spring Ioc container.
+
+
+
+public class ListCustomerAction extends ActionSupport{
+ 
+  public ActionForward execute(ActionMapping mapping,ActionForm form,HttpServletRequest request,HttpServletResponse response) throws Exception {
+ 
+	CustomerBo customerBo =
+		(CustomerBo) getWebApplicationContext().getBean("customerBo");
+ 
+	...
+	return mapping.findForward("success");
+ 
+  }
+}
+
+Ћибо :
+подключение классу в Spring использу€ bean из applicationContext.xml
+
+речь будет идти об абстрактном контроллере AbstractController
+
+шаг нулевой: импортируем следущие классы =
+import java.sql.Statement;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.AbstractController;
+
+
+шаг первый: создаем файл applicationContext.xml в пакете "по умолчанию", то есть в src--java
+
+
+шаг второй: вписываем в него такой бин
+<bean id="dataSource" 
+ class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+  <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+  <property name="url" value="jdbc:mysql://localhost:3306/mydatabase"/>
+  <property name="username" value="login"/>
+  <property name="password" value="password"/>
+</bean>
+
+
+шаг третий: в контроллере класса 
+
+ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+DriverManagerDataSource dds = (DriverManagerDataSource) context.getBean("dataSource");
+
+
+шаг четвертый: запрос к базе =
+try {
+  
+  Connection conn = dds.getConnection();
+  Statement stmt = conn.createStatement();
+  
+    ResultSet res = stmt.executeQuery(sql);
+    while(res.next()) {
+      page = res.getString("title");
+    }      
+  
+} catch(SQLException e) {
+  throw new RuntimeException(e);
+}

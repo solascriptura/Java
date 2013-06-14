@@ -1,0 +1,2 @@
+You have a service which returns an XML about products you shop has. Products are divided on categories and categories on subcategories. Every subcategory may contain any quantity of goods. Goods has the features as follows: producer, model(consist of two letters and three digits), date of issue(dd-MM-YYYY), color, not in stock or price tag.
+Write DTD and XSD for required XML and example of that XML.

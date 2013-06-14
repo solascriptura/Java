@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"- //Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.epam.testapp.model.News" table="NEWS">
+		<id name="id" type="int" column="ID">
+		  	<generator class="increment"/>
+		</id>
+		<property name="title" type="java.lang.String" column="TITLE"/>
+		<property name="date" type="java.util.Date" column="NEWS_DATE"/>
+		<property name="brief" type="java.lang.String" column="BRIEF"/>
+		<property name="content" type="java.lang.String" column="CONTENT"/>
+	</class>
+	
+	<query name="getall.news">from News news order by news.date desc</query>
+	<query name="delete.news">delete from News news where news.id in (:ids)</query>
+</hibernate-mapping>

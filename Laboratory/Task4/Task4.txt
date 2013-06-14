@@ -1,0 +1,13 @@
+On the initial page you  have three links for different parsers SAX, DOM, StAX
+Parse XML from previous task by SAX, DOM and STaX. Using servlet get request and generate HTML response like following:
+CATEGORY NAME
+     SUBCATEGORY NAME
+               PRODUCT NAME      PROVIDER       MODEL    DATE OF ISSUE        COLOR   PRICE 
+      SUBCATEGORY NAME
+               PRODUCT NAME      PROVIDER       MODEL    DATE OF ISSUE        COLOR   PRICE 
+....
+CATEGORY NAME
+     SUBCATEGORY NAME
+               PRODUCT NAME      PROVIDER       MODEL    DATE OF ISSUE        COLOR   PRICE 
+      SUBCATEGORY NAME
+               PRODUCT NAME      PROVIDER       MODEL    DATE OF ISSUE        COLOR   PRICE 
